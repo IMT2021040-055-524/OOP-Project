@@ -5,13 +5,9 @@ import ecomm.Platform;
 import ecomm.Seller;
 import java.util.ArrayList;
 import ecomm.*;
-import ecomm.Globals.Category;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class PlatformDemo extends Platform {
@@ -39,7 +35,7 @@ public class PlatformDemo extends Platform {
 
     public void processRequests() {
         ArrayList<String> requests = new ArrayList<String>(0);
-        ArrayList <String> responses = new ArrayList <String> (0);
+        ArrayList<String> responses = new ArrayList<String>(0);
 
         Scanner scannerobj = new Scanner(System.in);
 
@@ -55,8 +51,8 @@ public class PlatformDemo extends Platform {
                     } else {
                         System.out.println("Read File already exists.");
                         Scanner readerobj = new Scanner(myFile);
-                        
-                        for(int i = 0; i < this.processed_count; i++){
+
+                        for (int i = 0; i < this.processed_count; i++) {
                             String temp_String = readerobj.nextLine();
                         }
 
@@ -68,101 +64,98 @@ public class PlatformDemo extends Platform {
                     }
 
                     // PROCESS REQUESTS.
-                    for(int pq = this.processed_count; pq < requests.size(); pq++){
-                        
+                    for (int pq = this.processed_count; pq < requests.size(); pq++) {
+
                         String[] req = requests.get(this.processed_count).split(" ");
                         // Start...
-                        if(req[2].equals("Start")){
-                            ArrayList <String> temp_list = new ArrayList <String> (0);
-                        
-                            for(Globals.Category cat: Globals.Category.values()){
-                                
-                                temp_list.add(this.global_helper.getCategoryName(cat));
-                            } 
+                        if (req[2].equals("Start")) {
+                            ArrayList<String> temp_list = new ArrayList<String>(0);
 
-                            String temp_response = req[0] + " " + req[1];                      
-                            for(int i = 0; i < temp_list.size(); i++){
+                            for (Globals.Category cat : Globals.Category.values()) {
+
+                                temp_list.add(this.global_helper.getCategoryName(cat));
+                            }
+
+                            String temp_response = req[0] + " " + req[1];
+                            for (int i = 0; i < temp_list.size(); i++) {
                                 temp_response = temp_response + " " + temp_list.get(i);
                             }
-                            
+
                             responses.add(temp_response);
                             this.processed_count += 1;
                         }
 
                         // List <category>
-                        else if(req[2].equals("List")){
+                        else if (req[2].equals("List")) {
 
                             String req_category = req[3];
-                            
-                            ArrayList <Product> temp_list = new ArrayList <Product> (0);
 
-                            for(int i = 0; i < this.seller_list.size(); i++){
+                            ArrayList<Product> temp_list = new ArrayList<Product>(0);
+
+                            for (int i = 0; i < this.seller_list.size(); i++) {
                                 Seller tempSeller = this.seller_list.get(i);
 
-                                for(Globals.Category c: Globals.Category.values()){
-                                    if(this.global_helper.getCategoryName(c).equals(req_category)){
+                                for (Globals.Category c : Globals.Category.values()) {
+                                    if (this.global_helper.getCategoryName(c).equals(req_category)) {
                                         temp_list.addAll(tempSeller.findProducts(c));
                                     }
                                 }
                             }
 
-                            String temp_response_head = req[0] + " " + req[1];                 
-                            
-                            for(int i = 0; i < temp_list.size(); i++){
-                                String temp_response = temp_response_head + " " + temp_list.get(i).getName() + " " + temp_list.get(i).getProductID() + " " + temp_list.get(i).getPrice() + " " + temp_list.get(i).getQuantity();
+                            String temp_response_head = req[0] + " " + req[1];
+
+                            for (int i = 0; i < temp_list.size(); i++) {
+                                String temp_response = temp_response_head + " " + temp_list.get(i).getName() + " "
+                                        + temp_list.get(i).getProductID() + " " + temp_list.get(i).getPrice() + " "
+                                        + temp_list.get(i).getQuantity();
                                 responses.add(temp_response);
                             }
-
-                            // System.out.println(responses.size() + "-----------------------------");
-                            // for(String s: responses){
-                            //     System.out.println(s);
-                            // }
 
                             this.processed_count += 1;
                         }
 
                         // Buy <product_id> <num_items>
-                        else if(req[2].equals("Buy")){
+                        else if (req[2].equals("Buy")) {
                             String p_id = req[3];
                             int p_quantity = Integer.parseInt(req[4]);
 
                             boolean is_available = false;
 
                             // Prioritising first available valid seller.
-                            for(int i = 0; i < this.seller_list.size(); i++){
+                            for (int i = 0; i < this.seller_list.size(); i++) {
                                 Seller tempSeller = this.seller_list.get(i);
 
-                                for(Globals.Category c: Globals.Category.values()){
-                                    for(int j = 0; j < tempSeller.findProducts(c).size(); j++){
+                                for (Globals.Category c : Globals.Category.values()) {
+                                    for (int j = 0; j < tempSeller.findProducts(c).size(); j++) {
                                         Product temp_Product = tempSeller.findProducts(c).get(j);
-                                        if(temp_Product.getProductID().equals(p_id)){
+                                        if (temp_Product.getProductID().equals(p_id)) {
                                             is_available = tempSeller.buyProduct(p_id, p_quantity);
-                                            if(is_available){
+                                            if (is_available) {
                                                 String temp_response = req[0] + " " + req[1] + " Success";
                                                 responses.add(temp_response);
                                                 break;
                                             }
                                         }
-                                    }       
+                                    }
                                 }
                             }
 
-                            if(!is_available){
+                            if (!is_available) {
                                 String temp_response = req[0] + " " + req[1] + " Failure";
                                 responses.add(temp_response);
                             }
-                            
+
                             this.processed_count += 1;
                         }
                     }
-                    
+
                     // WRITE.
                     File writeobj = new File("PlatformToPortal.txt");
                     if (writeobj.createNewFile()) {
                         System.out.println("Write File created: " + writeobj.getName());
                         FileWriter writer = new FileWriter(writeobj, true);
-                        
-                        for(int i = this.prev_processed_count; i < responses.size(); i++) {
+
+                        for (int i = this.prev_processed_count; i < responses.size(); i++) {
                             writer.append(responses.get(i) + "\n");
                         }
                         this.prev_processed_count = responses.size();
@@ -171,7 +164,7 @@ public class PlatformDemo extends Platform {
                     } else {
                         System.out.println("Write File already exists.");
                         FileWriter writer = new FileWriter(writeobj, true);
-                        for(int i = this.prev_processed_count; i < responses.size(); i++) {
+                        for (int i = this.prev_processed_count; i < responses.size(); i++) {
                             writer.append(responses.get(i) + "\n");
                         }
                         this.prev_processed_count = responses.size();

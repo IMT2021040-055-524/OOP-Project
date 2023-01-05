@@ -16,18 +16,11 @@ void printMatrix(vector<vector<string> > &products){
 }
 
 bool sortName(const vector<string>& v1, const vector<string>& v2){
-    if(stoi(v1[1])==stoi(v2[1])){
-        return v1[2] < v2[2];
-    }
-    return stoi(v1[1])<stoi(v2[1]); 
+    return v1[2] < v2[2];
 }
 
 bool sortPrice(const vector<string>& v1, const vector<string>& v2){
-    if(stoi(v1[1])==stoi(v2[1])){
-        return stof(v1[4]) < stof(v2[4]);
-    }
-    return stoi(v1[1])<stoi(v2[1]); 
-    
+    return stof(v1[4]) < stof(v2[4]);
 }
 
 vector<string>split(string s1){
@@ -47,7 +40,6 @@ DemoPortal::DemoPortal(string portalID){
     requestID=0;
     this->portalID=portalID;
 }
-
 
 void DemoPortal::processUserCommand(string command){
     fstream f;
@@ -102,6 +94,7 @@ void DemoPortal::checkResponse(){
                         }
                         printMatrix(products);
                         products.clear();
+                        products.push_back(response);
                     }
                 }
                 

@@ -7,11 +7,12 @@ import ecomm.*;
 import java.util.*;
 
 public class Seller040 extends Seller{
-	private ArrayList<Product> prods = new ArrayList<Product>();
+	private ArrayList<ProductDemo> prods;
     private Globals global_helper = new Globals();
 
 	public Seller040(String id){
         super(id);
+        this.prods = new ArrayList<ProductDemo>();
 		Book b1 = new Book("A_Study_in_Scarlet","SH_ID",(float)309.98,10000);
 		Book b2 = new Book("And_Then_There_were_None","TWN_ID",(float)295.55,30000);
 		Mobile m1 = new Mobile("Pixel_6A","PXL",(float) 31999.95,5000);

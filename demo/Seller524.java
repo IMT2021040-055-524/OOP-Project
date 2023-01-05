@@ -9,14 +9,14 @@ import java.util.*;
 
 public class Seller524 extends Seller{
 	private String myID;
-	private ArrayList<Product> products;
+	private ArrayList<ProductDemo> products;
     private Globals global_helper = new Globals();
 
     // id is passed in by the class that instantiates sub-type of seller
 	public Seller524(String id) {
         super(id);
 		myID = id;
-        this.products = new ArrayList<Product>(0);
+        this.products = new ArrayList<ProductDemo>(0);
 		Book book1 = new Book("The_Great_Gatsby","B1",(float)250.50,22);
 		Book book2 = new Book("The_Lion_King","B2",(float)450.00,18);
 		Book book3 = new Book("The_Jungle_Book","B3",(float)200.00,15);

@@ -32,7 +32,4 @@ public abstract class ProductDemo extends Product{
     public void setQuantity(int new_quantity){
         this.quantity = new_quantity;
     }
-
-
-    
 }

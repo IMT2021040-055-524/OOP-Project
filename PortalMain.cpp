@@ -1,8 +1,10 @@
 #include "./demo/DemoPortal.h"
 #include<iostream>
+#include<string>
 using namespace std;
-int main(){
-    DemoPortal* p = new DemoPortal("portal-5");
+int main(int argc, char* argv[]){
+    string portalId=argv[1];
+    DemoPortal* p = new DemoPortal(portalId);
     string data;
     while(true){
         getline(cin,data);

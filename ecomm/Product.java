@@ -8,7 +8,6 @@ public abstract class Product {
 	public abstract String getProductID();
 	public abstract float getPrice();
 	public abstract int getQuantity();
-    public abstract void setQuantity(int quantity);
 }
 
 
