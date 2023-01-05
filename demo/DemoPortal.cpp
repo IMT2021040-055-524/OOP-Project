@@ -71,11 +71,14 @@ void DemoPortal::checkResponse(){
             if(mapping[stoi(response[1])][0]!="List"){
                 if(products.size()!=0){
                     //products[0][1] is RequestID
-                    if(mapping[stoi(products[0][1])][2]=="Name"){
-                        sort(products.begin(), products.end(), sortName);
-                    }else if(mapping[stoi(products[0][1])][2]=="Price"){
-                        sort(products.begin(), products.end(), sortPrice);       
+                    if(mapping[stoi(products[0][1])].size()>2){
+                        if(mapping[stoi(products[0][1])][2]=="Name"){
+                            sort(products.begin(), products.end(), sortName);
+                        }else if(mapping[stoi(products[0][1])][2]=="Price"){
+                            sort(products.begin(), products.end(), sortPrice);       
+                        }
                     }
+
                     printMatrix(products);
                     products.clear();
                 }
@@ -103,10 +106,12 @@ void DemoPortal::checkResponse(){
     }
     if(products.size()!=0){
         //products[0][1] is RequestID
-        if(mapping[stoi(products[0][1])][2]=="Name"){
-            sort(products.begin(), products.end(), sortName);
-        }else if(mapping[stoi(products[0][1])][2]=="Price"){
-            sort(products.begin(), products.end(), sortPrice);       
+        if(mapping[stoi(products[0][1])].size()>2){
+            if(mapping[stoi(products[0][1])][2]=="Name"){
+                sort(products.begin(), products.end(), sortName);
+            }else if(mapping[stoi(products[0][1])][2]=="Price"){
+                sort(products.begin(), products.end(), sortPrice);       
+            }
         }
         printMatrix(products);
     }
