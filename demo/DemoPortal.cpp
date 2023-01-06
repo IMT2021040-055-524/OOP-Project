@@ -62,12 +62,20 @@ void DemoPortal::processUserCommand(string command){
 void DemoPortal::checkResponse(){
     string text;
     ifstream MyReadFile("PlatformToPortal.txt");
+    if(!MyReadFile){
+        return;
+    }else if(MyReadFile.peek()==EOF){
+        MyReadFile.close();
+        return ;
+    }
+    bool new_output=false;
     vector<vector<string> >products;
     while(getline(MyReadFile, text)){
         vector<string> response = split(text);
         //response[1] is the requestID
         //mapping[stoi(response[1])][0] will be the type of request
         if(processedResponses.find(stoi(response[1]))==processedResponses.end() && this->portalID==(response[0])){
+            new_output=true;
             if(mapping[stoi(response[1])][0]!="List"){
                 if(products.size()!=0){
                     //products[0][1] is RequestID
@@ -115,8 +123,10 @@ void DemoPortal::checkResponse(){
         }
         printMatrix(products);
     }
-    for(int i=1;i<=requestID;i++){
-        processedResponses[i]=true;
+    if(new_output==true){
+        for(int i=1;i<=requestID;i++){
+            processedResponses[i]=true;
+        }
     }
     MyReadFile.close();
 }
