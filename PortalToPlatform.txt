@@ -1,4 +1,7 @@
-platform-2 1 List Mobile
-platform-1 1 List Mobile
-platform-1 4 Buy M3 25
-platform-2 4 Buy M3 78
+portal-1 1 List Mobile
+portal-1 2 List Book
+portal-1 5 Buy SH_ID 100
+portal-1 6 Buy M2 10
+portal-1 7 Buy M50 1
+portal-1 9 List Book
+portal-1 10 List Mobile

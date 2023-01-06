@@ -1,4 +1,4 @@
-// IMT2021055
+// File for PlatformDemo Class.
 package demo;
 
 import ecomm.Platform;
@@ -10,18 +10,22 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.Scanner;
 
+// Public class for PlatformDemo, inherits from abstract class Seller.
 public class PlatformDemo extends Platform {
+    // Private data members.
     private ArrayList<Seller> seller_list;
-    private int processed_count;
-    private int prev_processed_count;
+    private int processed_count;  // For requests.
+    private int prev_processed_count;  // For responses.
     private Globals global_helper = new Globals();
 
+    // Public Constructor.
     public PlatformDemo() {
         this.seller_list = new ArrayList<Seller>(0);
-        this.processed_count = 0; // Tracks (line) count of requests which have been processed
-        this.prev_processed_count = 0;
+        this.processed_count = 0; // Tracks (line) count of requests which have been processed.
+        this.prev_processed_count = 0;  // Tracks (line) count of responses which have been written.
     }
 
+    // Public Methods.
     public boolean addSeller(Seller aSeller) {
         if (this.seller_list.contains(aSeller)) {
             System.out.println("Seller already attached to platform.");
@@ -34,6 +38,7 @@ public class PlatformDemo extends Platform {
     }
 
     public void processRequests() {
+        // Maintaining arraylists of requests and responses.
         ArrayList<String> requests = new ArrayList<String>(0);
         ArrayList<String> responses = new ArrayList<String>(0);
 
@@ -42,6 +47,7 @@ public class PlatformDemo extends Platform {
         while (true) {
             String line = scannerobj.nextLine();
 
+            // Check.
             if (line.equals("Check")) {
                 try {
                     // READ
@@ -52,10 +58,12 @@ public class PlatformDemo extends Platform {
                         System.out.println("Read File already exists.");
                         Scanner readerobj = new Scanner(myFile);
 
+                        // Skip requests which have already been read/processed.
                         for (int i = 0; i < this.processed_count; i++) {
                             String temp_String = readerobj.nextLine();
                         }
 
+                        // Add requests to the arraylist.
                         while (readerobj.hasNextLine()) {
                             String data = readerobj.nextLine();
                             requests.add(data);
@@ -64,15 +72,16 @@ public class PlatformDemo extends Platform {
                     }
 
                     // PROCESS REQUESTS.
+                    // Process only new request.
                     for (int pq = this.processed_count; pq < requests.size(); pq++) {
 
                         String[] req = requests.get(this.processed_count).split(" ");
+                        
                         // Start...
                         if (req[2].equals("Start")) {
                             ArrayList<String> temp_list = new ArrayList<String>(0);
 
                             for (Globals.Category cat : Globals.Category.values()) {
-
                                 temp_list.add(this.global_helper.getCategoryName(cat));
                             }
 
@@ -155,32 +164,39 @@ public class PlatformDemo extends Platform {
                         System.out.println("Write File created: " + writeobj.getName());
                         FileWriter writer = new FileWriter(writeobj, true);
 
+                        // Write only new responses.
                         for (int i = this.prev_processed_count; i < responses.size(); i++) {
                             writer.append(responses.get(i) + "\n");
                         }
+
                         this.prev_processed_count = responses.size();
                         writer.close();
 
                     } else {
                         System.out.println("Write File already exists.");
                         FileWriter writer = new FileWriter(writeobj, true);
+                        
                         for (int i = this.prev_processed_count; i < responses.size(); i++) {
                             writer.append(responses.get(i) + "\n");
                         }
+                        
                         this.prev_processed_count = responses.size();
                         writer.close();
                     }
                 }
-
+                
+                // Catch errors.
                 catch (Exception e) {
                     System.out.println("An error occurred." + e.getMessage());
                 }
             }
 
+            // Stop (End).
             else if (line.equals("End")) {
                 break;
             }
         }
+        
         scannerobj.close();
         return;
     }

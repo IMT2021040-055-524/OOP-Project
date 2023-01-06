@@ -9,15 +9,17 @@ import java.util.*;
 
 public class Seller524 extends Seller{
 	private String myID;
-	private ArrayList<ProductDemo> products;
-    private Globals global_helper = new Globals();
+	private ArrayList<ProductDemo> products;  // Array of Products
+    private Globals global_helper = new Globals();  // Used to convert enum to string.
 
     // id is passed in by the class that instantiates sub-type of seller
 	public Seller524(String id) {
         super(id);
 		myID = id;
         this.products = new ArrayList<ProductDemo>(0);
-		Book book1 = new Book("The_Great_Gatsby","B1",(float)250.50,22);
+		
+        // Book and mobile instantiation
+        Book book1 = new Book("The_Great_Gatsby","B1",(float)250.50,22);
 		Book book2 = new Book("The_Lion_King","B2",(float)450.00,18);
 		Book book3 = new Book("The_Jungle_Book","B3",(float)200.00,15);
 		Book book4 = new Book("Farenheit_451","B4",(float)500.00,20);
@@ -46,10 +48,14 @@ public class Seller524 extends Seller{
         return;
 	}
 
-	// Seller to return listing of Products of specified Category
+	// Method to return listing of Products of specified Category
 	public ArrayList<Product> findProducts(Globals.Category whichOne){
 		ArrayList<Product> listofall = new ArrayList<Product>();
-		for(int i=0;i<products.size();i++){
+		
+        // Checks if the product category is the same as the argument.
+		// passed and adds it to the list if the category matches.
+		// Returns the list in the end.
+        for(int i=0;i<products.size();i++){
 			if(this.global_helper.getCategoryName(products.get(i).getCategory()).equals(this.global_helper.getCategoryName(whichOne))){
 				listofall.add(products.get(i));
 			}

@@ -1,18 +1,39 @@
-platform-2 1 Pixel_6A PXL 31999.95 5000
-platform-2 1 Oneplus_Nord_2 ONP_ID 24999.99 2000
-platform-2 1 Nokia_3310 seller055-mobile1 570.944 6
-platform-2 1 Motorola_Razor seller055-mobile2 713.3354 9
-platform-2 1 Sony_Ericsson_Xperia seller055-mobile3 731.9699 6
-platform-2 1 Nokia_4410 M1 10000.0 10
-platform-2 1 Pixel_4A M2 30000.0 24
-platform-2 1 Iphone_13 M3 50000.0 30
-platform-1 1 Pixel_6A PXL 31999.95 5000
-platform-1 1 Oneplus_Nord_2 ONP_ID 24999.99 2000
-platform-1 1 Nokia_3310 seller055-mobile1 570.944 6
-platform-1 1 Motorola_Razor seller055-mobile2 713.3354 9
-platform-1 1 Sony_Ericsson_Xperia seller055-mobile3 731.9699 6
-platform-1 1 Nokia_4410 M1 10000.0 10
-platform-1 1 Pixel_4A M2 30000.0 24
-platform-1 1 Iphone_13 M3 50000.0 30
-platform-1 4 Success
-platform-2 4 Failure
+portal-1 1 Pixel_6A PXL 31999.95 5000
+portal-1 1 Oneplus_Nord_2 ONP_ID 24999.99 2000
+portal-1 1 Nokia_3310 seller055-mobile1 567.0652 7
+portal-1 1 Motorola_Razor seller055-mobile2 561.09204 6
+portal-1 1 Sony_Ericsson_Xperia seller055-mobile3 890.66986 5
+portal-1 1 Nokia_4410 M1 10000.0 10
+portal-1 1 Pixel_4A M2 30000.0 24
+portal-1 1 Iphone_13 M3 50000.0 30
+portal-1 2 A_Study_in_Scarlet SH_ID 309.98 10000
+portal-1 2 And_Then_There_were_None TWN_ID 295.55 30000
+portal-1 2 A_Christmas_Carol seller055-book1 1060.4572 7
+portal-1 2 Endless_Night seller055-book2 1011.8605 9
+portal-1 2 Alice_in_Wonderland seller055-book3 767.78577 7
+portal-1 2 Charlie_and_The_Chocolate_Factory seller055-book4 727.2482 7
+portal-1 2 The_Great_Gatsby B1 250.5 22
+portal-1 2 The_Lion_King B2 450.0 18
+portal-1 2 The_Jungle_Book B3 200.0 15
+portal-1 2 Farenheit_451 B4 500.0 20
+portal-1 5 Success
+portal-1 6 Success
+portal-1 7 Failure
+portal-1 9 A_Study_in_Scarlet SH_ID 309.98 9900
+portal-1 9 And_Then_There_were_None TWN_ID 295.55 30000
+portal-1 9 A_Christmas_Carol seller055-book1 1060.4572 7
+portal-1 9 Endless_Night seller055-book2 1011.8605 9
+portal-1 9 Alice_in_Wonderland seller055-book3 767.78577 7
+portal-1 9 Charlie_and_The_Chocolate_Factory seller055-book4 727.2482 7
+portal-1 9 The_Great_Gatsby B1 250.5 22
+portal-1 9 The_Lion_King B2 450.0 18
+portal-1 9 The_Jungle_Book B3 200.0 15
+portal-1 9 Farenheit_451 B4 500.0 20
+portal-1 10 Pixel_6A PXL 31999.95 5000
+portal-1 10 Oneplus_Nord_2 ONP_ID 24999.99 2000
+portal-1 10 Nokia_3310 seller055-mobile1 567.0652 7
+portal-1 10 Motorola_Razor seller055-mobile2 561.09204 6
+portal-1 10 Sony_Ericsson_Xperia seller055-mobile3 890.66986 5
+portal-1 10 Nokia_4410 M1 10000.0 10
+portal-1 10 Pixel_4A M2 30000.0 14
+portal-1 10 Iphone_13 M3 50000.0 30

@@ -1,10 +1,11 @@
-// IMT2021055
+// File for ProductDemo class.
 package demo;
 
 import ecomm.Globals;
 import ecomm.Product;
 import ecomm.*;
 
+// Public class ProductDemo, inherits from abstract class Product.
 public abstract class ProductDemo extends Product{
     protected String name;
     protected String product_id;
@@ -13,6 +14,7 @@ public abstract class ProductDemo extends Product{
     
     public abstract Globals.Category getCategory();
     
+    // Getters.
     public String getName(){
         return(this.name);
     }
@@ -29,6 +31,7 @@ public abstract class ProductDemo extends Product{
         return(this.quantity);
     }
 
+    // Setter for quantity.
     public void setQuantity(int new_quantity){
         this.quantity = new_quantity;
     }

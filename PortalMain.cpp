@@ -3,7 +3,7 @@
 #include<string>
 using namespace std;
 int main(int argc, char* argv[]){
-    string portalId=argv[1];
+    string portalId=argv[1]; // To take the portalID as an argument 
     DemoPortal* p = new DemoPortal(portalId);
     string data;
     while(true){
@@ -15,5 +15,4 @@ int main(int argc, char* argv[]){
     }
 }
 
-//Start List Buy List Check
 
