@@ -53,8 +53,12 @@ void DemoPortal::processUserCommand(string command){
         f<<this->portalID<<" "<<this->requestID<<" "<<"Buy"<<" "<<split_str[1]<<" "<<split_str[2]<<"\n";
     }else if(split_str[0]=="Start"){
         f<<this->portalID<<" "<<this->requestID<<" "<<"Start"<<endl;
-    }else{
+    }else if(split_str[0]=="Check"){
         this->checkResponse();
+    }else{
+        cout<<"Invalid Request.. Didn't Process."<<endl;
+        mapping.erase(requestID);
+        requestID--;
     }
     f.close();
 }

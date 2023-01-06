@@ -1,22 +1,4 @@
-portal-3 1 Start
-portal-24 1 Start
-portal-3 4 List Mobile
-portal-3 5 List Book
-portal-24 4 List Book
-portal-24 5 List Mobile
-portal-24 8 List Book
-portal-24 9 List Book
-portal-3 7 List Mobile
-portal-3 8 List Book
-portal-24 12 List Book
-portal-24 13 List Mobile
-portal-24 15 List Book
-portal-24 16 List Book
-portal-24 19 List Mobile
-portal-24 20 List Book
-portal-24 23 Buy B4 10
-portal-24 26 List Book
-portal-3 10 Buy M2 12
-portal-24 29 Buy M2 13
-portal-24 31 List Mobile
-portal-3 12 List Mobile
+platform-2 1 List Mobile
+platform-1 1 List Mobile
+platform-1 4 Buy M3 25
+platform-2 4 Buy M3 78
